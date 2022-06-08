@@ -51,8 +51,8 @@ def coco2png():
                 anns_img, coco.annToMask(ann) * (ann["category_id"] + 1)
             )
 
-        ann_img = Image.fromarray(anns_img).convert("L")
-        map_img = segmap_to_pil(anns_img, df_ctg.index)
+        ann_img = segmap_to_pil(anns_img, df_ctg.index)
+        map_img = Image.fromarray(anns_img).convert("L")
         ann_img.save(ann_out_dir / (image_id + ".png"))
         map_img.save(map_out_dir / (image_id + ".png"))
 
